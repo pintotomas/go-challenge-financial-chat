@@ -3,13 +3,16 @@ package models
 import (
 	"errors"
 	"fmt"
+	"time"
 
 	"github.com/go-playground/validator"
 )
 
 // Model is the base definition for every app model.
 type Model struct {
-	ID uint `gorm:"primarykey"`
+	ID        uint      `gorm:"primarykey"`
+	CreatedOn time.Time `json:"createdOn"`
+	UpdatedOn time.Time `json:"updatedOn"`
 }
 
 // FieldError is an error used to indicate there is field model validation error.

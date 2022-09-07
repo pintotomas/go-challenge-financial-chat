@@ -16,7 +16,7 @@ func init() {
 			type User struct {
 				models.Model
 				Nickname string
-				Password string
+				Password []byte
 			}
 
 			return tx.AutoMigrate(&User{})

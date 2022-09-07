@@ -5,8 +5,10 @@ import (
 	"github.com/gin-gonic/gin"
 	"go-challenge-financial-chat/app/db"
 	"go-challenge-financial-chat/app/models"
+	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
 	"net/http"
+	"time"
 )
 
 func CreateUser(c *gin.Context) {
@@ -21,11 +23,14 @@ func CreateUser(c *gin.Context) {
 		return
 	}
 
+	t := time.Now()
+	hashedPassword, _ := bcrypt.GenerateFromPassword([]byte(userInput.Nickname), 8)
 	user := models.User{
 		Nickname: userInput.Nickname,
-		//TODO encrypt password
-		Password: userInput.Password,
+		Password: hashedPassword,
 	}
+	user.CreatedOn = t
+	user.UpdatedOn = t
 	//TODO can be improved
 	if r := db.CONN.Create(&user); r.Error != nil {
 		var err models.ValidationErrors

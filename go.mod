@@ -25,6 +25,7 @@ require (
 	github.com/spf13/viper v1.7.1
 	github.com/stretchr/testify v1.7.0 // indirect
 	github.com/xordataexchange/crypt v0.0.3-0.20170626215501-b2862e3d0a77 // indirect
+	golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9
 	golang.org/x/sys v0.0.0-20210601080250-7ecdf8ef093b // indirect
 	gopkg.in/ini.v1 v1.62.0 // indirect
 	gorm.io/driver/sqlite v1.1.4
